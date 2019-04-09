@@ -23,7 +23,7 @@ bool Obj::init(std::string fileName, VECTOR2 divSize, VECTOR2 divCnt)
 	return true;
 }
 
-bool Obj::init(std::string fileName, VECTOR2 divSize, VECTOR2 divCnt, VECTOR2 pos)
+bool Obj::init(std::string fileName, VECTOR2 divSize, VECTOR2 divCnt, VECTOR pos)
 {
 	init(fileName, divSize, divCnt);
 	SetPos(pos);
@@ -50,7 +50,7 @@ void Obj::Draw(void)
 	if (animTable.find(animName) != animTable.end())
 	{
 		id = (animTable[animName][ANIM_TBL_START_ID])
-			+ ((animCnt / animTable[animName][ANIM_TBL_INV]) % animTable[animName][ANIM_TBL_FRAME]);
+		  + ((animCnt / animTable[animName][ANIM_TBL_INV]) % animTable[animName][ANIM_TBL_FRAME]);
 	}
 	animCnt++;
 	if (id < IMAGE_ID(imageName).size())
@@ -67,12 +67,12 @@ void Obj::Draw(unsigned int id)
 	}
 }
 
-const VECTOR2 & Obj::GetPos(void)
+const VECTOR & Obj::GetPos(void)
 {
 	return pos;
 }
 
-void Obj::SetPos(VECTOR2 pos)
+void Obj::SetPos(VECTOR pos)
 {
 	Obj::pos = pos;
 }

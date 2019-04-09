@@ -2,6 +2,7 @@
 #include "GameScene.h"
 #include "SceneMng.h"
 #include "Obj.h"
+#include "Player.h"
 #include "GameCtrl.h"
 #include "classObj.h"
 
@@ -23,6 +24,7 @@ int GameScene::Init()
 		objList = std::make_shared<sharedObjList>();
 	}
 	objList->clear();
+//	AddObjList()(objList, std::make_unique<Player>((0.0f, 0.0f, 0.0f), 500));
 	lpSceneMng.SetDrawOffset(VECTOR2(GAME_SCREEN_X, GAME_SCREEN_Y));
 
 	return 0;
@@ -32,7 +34,8 @@ void GameScene::Draw()
 {
 	ClsDrawScreen();
 
-	DrawString(200, 200, "Hello World!", 0x00ffffff);
+	DrawString(0, 100, "GameArea", 0x00ffffff);
+	DrawString(0, 600, "GameArea", 0x00ffffff);
 
 	ScreenFlip();
 }

@@ -2,12 +2,12 @@
 #include <memory>
 
 #define GAME_SCREEN_X 0				// 描画オフセット
-#define GAME_SCREEN_Y 0
+#define GAME_SCREEN_Y 100
 
-#define GAME_SCREEN_SIZE_X 600		// ゲームエリアのサイズ
-#define GAME_SCREEN_SIZE_Y 600
+#define GAME_SCREEN_SIZE_X 1200		// ゲームエリアのサイズ
+#define GAME_SCREEN_SIZE_Y 500
 
-#define CHIP_SIZE 50				//1ﾏｽのｻｲｽﾞ(縦横両用)
+#define LANE_WIDTH 50				// ﾚｰﾝ1つの幅(ﾌﾟﾚｲﾔｰの幅)
 
 class BaseScene;
 class GameCtrl;
