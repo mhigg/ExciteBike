@@ -22,13 +22,7 @@ void CourceCtrl::Draw(bool modeFlag)
 
 bool CourceCtrl::SetUpGameObj(sharedListObj objList, bool modeFlag)
 {
-	if (modeFlag)
-	{
+	AddObjList()(objList, std::make_unique<Player>(VGet(0, 0, 0), VECTOR2(200, 500)));
 
-	}
-	else
-	{
-//		sharedObj objPtr = std::make_unique<Player>(drawOffset);
-	}
-	return false;
+	return true;
 }

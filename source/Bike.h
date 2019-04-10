@@ -6,5 +6,8 @@ class Bike :
 public:
 	Bike();
 	~Bike();
+
+private:
+	void SetMove(const GameCtrl &controller);
 };
 

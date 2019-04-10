@@ -35,9 +35,9 @@ Obj::~Obj()
 
 }
 
-void Obj::UpDate(const GameCtrl &controller, weakListObj objList)
+void Obj::UpDate(const GameCtrl &controller)
 {
-	SetMove(controller, objList);
+	SetMove(controller);
 }
 
 void Obj::Draw(void)

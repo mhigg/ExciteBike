@@ -11,8 +11,8 @@ enum DIR {
 	DIR_MAX
 };
 
-class Player
-	: Obj
+class Player :
+	public Obj
 {
 public:
 	Player();
@@ -20,12 +20,11 @@ public:
 	~Player();
 
 private:
-	void SetMove(const GameCtrl & controller, weakListObj objList);
-	
+	void SetMove(const GameCtrl & controller);
 	DIR dir;
-	int speed;
+	int speed;		// ÌßÚ²Ô°‚Ì‘¬“x
+	int turbo;		// À°ÎÞÒ°À
+	bool OHFlag;	// µ°ÊÞ°Ë°ÄÌ×¸Þ
 	VECTOR2 tmpPos;
-
-	sharedListObj objList;
 };
 

@@ -2,7 +2,7 @@
 #include "classObj.h"
 #include "VECTOR2.h"
 
-#define lpCourceCtrl = CourceCtrl::GetInstance()
+#define lpCourceCtrl CourceCtrl::GetInstance()
 
 class CourceCtrl
 {

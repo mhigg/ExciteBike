@@ -4,6 +4,7 @@
 #include "Obj.h"
 #include "Player.h"
 #include "GameCtrl.h"
+#include "CourceCtrl.h"
 #include "classObj.h"
 
 
@@ -21,9 +22,10 @@ int GameScene::Init()
 {
 	if (!objList)
 	{
-		objList = std::make_shared<sharedObjList>();
+		objList = std::make_shared<uniqueObjList>();
 	}
 	objList->clear();
+	lpCourceCtrl.SetUpGameObj(objList, false);
 	lpSceneMng.SetDrawOffset(VECTOR2(GAME_SCREEN_X, GAME_SCREEN_Y));
 
 	return 0;
@@ -47,7 +49,7 @@ unique_Base GameScene::UpDate(unique_Base own, const GameCtrl & controller)
 	// ƒvƒŒƒCƒ„[‚Ì“®ìˆ—
 	for (auto itr = objList->begin(); itr != objList->end(); itr++)
 	{
-		(*itr)->UpDate(controller, objList);
+		(*itr)->UpDate(controller);
 	}
 
 	Draw();

@@ -32,7 +32,7 @@ public:
 		VECTOR pos
 	);	//画像のﾌｧｲﾙ名,分割ｻｲｽﾞ,分割数の初期化,座標
 	virtual ~Obj();
-	void UpDate(const GameCtrl &controller, weakListObj objList);	//情報更新	ｺﾝﾄﾛｰﾗｰ自体のﾎﾟｲﾝﾀを渡す
+	void UpDate(const GameCtrl &controller);	//情報更新	ｺﾝﾄﾛｰﾗｰ自体のﾎﾟｲﾝﾀを渡す
 	virtual void Draw(void);	//描画
 	void Draw(unsigned int id);	//ID指定描画
 	const VECTOR &GetPos(void);	//座標取得関数
@@ -49,7 +49,7 @@ public:
 	virtual bool CheckDeath(void) { return false; };	// Player:死亡判定 MapCursor:使用中かどうか
 
 private:
-	virtual void SetMove(const GameCtrl &controller, weakListObj objList) = 0;
+	virtual void SetMove(const GameCtrl &controller) = 0;
 
 	std::string animName;	//表示するｱﾆﾒｰｼｮﾝ名
 	std::map<std::string, int[ANIM_TBL_MAX]> animTable;
