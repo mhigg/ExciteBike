@@ -6,5 +6,11 @@ class DesignScene :
 public:
 	DesignScene();
 	~DesignScene();
+
+	unique_Base UpDate(unique_Base own, const GameCtrl &controller);
+
+private:
+	int Init();
+
 };
 

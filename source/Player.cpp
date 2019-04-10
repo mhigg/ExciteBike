@@ -1,16 +1,18 @@
 #include <DxLib.h>
 #include "Player.h"
+#include "Obj.h"
 #include "GameCtrl.h"
-
+#include "classObj.h"
 
 
 Player::Player()
 {
+	init("player.png", VECTOR2(30, 30), VECTOR2(5, 6));
 }
 
 Player::Player(VECTOR SetUpPos, VECTOR2 drawOffset):Obj(drawOffset)
 {
-	pos = SetUpPos;
+	init("player.png", VECTOR2(30, 30), VECTOR2(5, 6), SetUpPos);
 }
 
 
@@ -23,7 +25,7 @@ void Player::SetMove(const GameCtrl & controller, weakListObj objList)
 	auto ctrl = controller.GetCtrl(KEY_TYPE_NOW);
 	auto ctrlOld = controller.GetCtrl(KEY_TYPE_OLD);
 
-	VECTOR distance = { 0,0,0 };	// 移動量 x:直進 y:ｼﾞｬﾝﾌﾟ z:手前と奥
+	VECTOR distance = VGet(0,0,0);	// 移動量 x:直進 y:ｼﾞｬﾝﾌﾟ z:手前と奥
 
 	if (ctrl[KEY_INPUT_Z] & ~ctrlOld[KEY_INPUT_Z])
 	{

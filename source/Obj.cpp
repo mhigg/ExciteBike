@@ -1,4 +1,4 @@
-#include "DxLib.h"
+#include <DxLib.h>
 #include "Obj.h"
 #include "SceneMng.h"
 #include "ImageMng.h"

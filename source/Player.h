@@ -1,6 +1,7 @@
 #pragma once
 #include "Obj.h"
 #include "VECTOR2.h"
+#include "classObj.h"
 
 enum DIR {
 	DIR_RIGHT,		// ƒnƒ“ƒhƒ‹‰EØ‚è

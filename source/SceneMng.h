@@ -8,7 +8,7 @@
 
 class Obj;
 
-using ListObj_itr = std::list<Obj>::iterator;
+using ListObj_itr = std::list<std::shared_ptr<Obj>>::iterator;
 
 class SceneMng
 {

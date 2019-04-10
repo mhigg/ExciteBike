@@ -1,4 +1,5 @@
 #pragma once
+#include <DxLib.h>
 #include <string>
 #include <map>
 #include "VECTOR2.h"
