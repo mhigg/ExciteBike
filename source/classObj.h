@@ -1,14 +1,15 @@
 #pragma once
-#include <memory>
 #include <list>
+#include <memory>
 
 class Obj;
 
-using sharedObj = std::shared_ptr<Obj>;
-using sharedObjList = std::list<sharedObj>;
-using sharedListObj = std::shared_ptr<sharedObjList>;
-using ObjList_itr = sharedObjList::iterator;
-using weakListObj = std::weak_ptr<sharedObjList>;
+using sharedObj = std::shared_ptr<Obj>;					// Obj‚Ì¼ª±°ÄŞÎß²İÀ
+using sharedObjList = std::list<sharedObj>;				// Obj‚Ì¼ª±°ÄŞÎß²İÀ‚ÌØ½Ä
+using sharedListObj = std::shared_ptr<sharedObjList>;	// Obj¼ª±°ÄŞÎß²İÀ‚ÌØ½Ä‚Ì¼ª±°ÄŞÎß²İÀ
+using ObjList_itr = sharedObjList::iterator;			// sharedObjList‚Ì²ÃÚ°À
+using weakListObj = std::weak_ptr<sharedObjList>;		// Obj¼ª±°ÄŞÎß²İÀ‚ÌØ½Ä‚Ì³¨°¸Îß²İÀ
+
 
 // ObjList‚É—v‘f‚ğ’Ç‰Á‚·‚éŠÖ”µÌŞ¼Şª¸Ä
 struct AddObjList

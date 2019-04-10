@@ -1,9 +1,14 @@
 #pragma once
+#include <list>
 #include "BaseScene.h"
 #include "GameCtrl.h"
 #include "VECTOR2.h"
 
 #define lpSceneMng SceneMng::GetInstance()
+
+class Obj;
+
+using ListObj_itr = std::list<Obj>::iterator;
 
 class SceneMng
 {

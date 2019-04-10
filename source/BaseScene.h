@@ -7,7 +7,7 @@
 #define GAME_SCREEN_SIZE_X 1200		// ゲームエリアのサイズ
 #define GAME_SCREEN_SIZE_Y 500
 
-#define LANE_WIDTH 50				// ﾚｰﾝ1つの幅(ﾌﾟﾚｲﾔｰの幅)
+#define LANE_WIDTH 50				// ﾚｰﾝ1つの幅(ﾌﾟﾚｲﾔｰの幅の半分)
 
 class BaseScene;
 class GameCtrl;

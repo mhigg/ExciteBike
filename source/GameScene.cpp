@@ -24,7 +24,8 @@ int GameScene::Init()
 		objList = std::make_shared<sharedObjList>();
 	}
 	objList->clear();
-//	AddObjList()(objList, std::make_unique<Player>((0.0f, 0.0f, 0.0f), 500));
+//	VECTOR setPos = { 0,0,0 };
+//	ListObj_itr obj = AddObjList()(objList, std::make_unique<Player>(setPos, VECTOR2(0, 500)));
 	lpSceneMng.SetDrawOffset(VECTOR2(GAME_SCREEN_X, GAME_SCREEN_Y));
 
 	return 0;
