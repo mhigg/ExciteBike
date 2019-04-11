@@ -22,7 +22,9 @@ public:
 	void Run(void);							// ゲームループ
 	VECTOR2 GetScreenSize(void);			// 画面のサイズを取得
 	VECTOR2 GetGameScreenSize(void);		// ゲームエリアのサイズを取得
+	VECTOR2 GetDrawOffset(void);
 	void SetDrawOffset(VECTOR2 drawOffset);
+	int GetFram(bool timeFlag);				// true:経過時間(秒) false:経過ﾌﾚｰﾑ数
 
 private:
 	SceneMng();

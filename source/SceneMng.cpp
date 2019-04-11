@@ -4,9 +4,11 @@
 #include "GameScene.h"
 #include "VECTOR2.h"
 
+constexpr int SCREEN_SIZE_X = 1200;
+constexpr int SCREEN_SIZE_Y = 800;
 
-#define SCREEN_SIZE_X 1200			//‰æ–Ê‰ð‘œ“x
-#define SCREEN_SIZE_Y 800
+//#define SCREEN_SIZE_X 1200			//‰æ–Ê‰ð‘œ“x
+//#define SCREEN_SIZE_Y 800
 
 
 SceneMng::SceneMng()
@@ -22,6 +24,7 @@ void SceneMng::Run(void)
 	{
 		gameCtrl->UpDate();
 		activeScene = activeScene->UpDate(std::move(activeScene), (*gameCtrl));
+		framCnt++;
 	}
 }
 
@@ -35,9 +38,23 @@ VECTOR2 SceneMng::GetGameScreenSize(void)
 	return VECTOR2(GAME_SCREEN_SIZE_X, GAME_SCREEN_SIZE_Y);
 }
 
+VECTOR2 SceneMng::GetDrawOffset(void)
+{
+	return drawOffset;
+}
+
 void SceneMng::SetDrawOffset(VECTOR2 drawOffset)
 {
 	this->drawOffset = drawOffset;
+}
+
+int SceneMng::GetFram(bool timeFlag)
+{
+	if (timeFlag)
+	{
+		return (framCnt / 60);
+	}
+	return framCnt;
 }
 
 int SceneMng::Init(void)
@@ -50,6 +67,8 @@ int SceneMng::Init(void)
 		return -1;
 	}
 	SetDrawScreen(DX_SCREEN_BACK);
+
+	framCnt = 0;
 
 	gameCtrl = std::make_unique<GameCtrl>();
 

@@ -38,6 +38,11 @@ void GameScene::Draw()
 	DrawString(0, 100, "GameArea", 0x00ffffff);
 	DrawString(0, 600, "GameArea", 0x00ffffff);
 
+	for (auto itr = objList->begin(); itr != objList->end(); itr++)
+	{
+		(*itr)->Draw();
+	}
+
 	ScreenFlip();
 }
 
