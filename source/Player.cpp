@@ -1,3 +1,5 @@
+// ※※※マジックナンバーは定数化すること
+
 #include <DxLib.h>
 #include "Player.h"
 #include "Bike.h"
