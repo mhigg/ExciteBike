@@ -24,8 +24,8 @@ public:
 	//LoadDivGraph‘Î‰
 	const VEC_INT& GetID(std::string f_name, VECTOR2 divSize, VECTOR2 divCnt);
 
-// ÊŞ²ÅØÃŞ°À‚Ì“Ç‚İ‚İ
-void ReadGraph(void);
+	// ÊŞ²ÅØÃŞ°À‚Ì“Ç‚İ‚İ
+	void ReadGraph(void);
 
 private:
 	ImageMng();

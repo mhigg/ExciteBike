@@ -69,7 +69,7 @@ protected:
 
 	unsigned int animCnt;	// ｱﾆﾒｰｼｮﾝのｶｳﾝﾄ
 
-	VECTOR2 drawPos;			// 表示する際の座標
+	VECTOR2 drawPos;			// 表示する際の座標 : y座標はﾌﾟﾚｲﾔｰ座標のyとzを足した値
 	VECTOR pos;					// ﾌﾟﾚｲﾔｰのｽﾃｰｼﾞ上の座標
 	void SetPos(VECTOR pos);
 

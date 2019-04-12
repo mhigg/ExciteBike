@@ -10,12 +10,14 @@ Player::Player()
 {
 	init("player.png", VECTOR2(30, 30), VECTOR2(5, 6));
 	status = STATUS_NORMAL;
+	drawPos = { 0,0 };
 }
 
 Player::Player(VECTOR SetUpPos, VECTOR2 drawOffset):Obj(drawOffset)
 {
 	init("player.png", VECTOR2(30, 30), VECTOR2(5, 6), SetUpPos);
 	status = STATUS_NORMAL;
+	drawPos = { static_cast<int>(SetUpPos.x), static_cast<int>(SetUpPos.y + SetUpPos.z) };
 }
 
 
@@ -27,16 +29,11 @@ void Player::Draw(void)
 {
 	VECTOR2 drawOffset = lpSceneMng.GetDrawOffset();
 
-	DrawFormatString(pos.x - drawOffset.x, 500, 0x00ffffff, "speed:%d turbo:%d", speed, turbo);
+	DrawFormatString(drawPos.x - drawOffset.x, drawPos.y, 0x00ffffff, "speed:%d turbo:%d", speed, turbo);
 	if (status == STATUS_OVERHEAT)
 	{
 		OverHeatDraw();
 	}
-}
-
-bool Player::CheckObjType(OBJ_TYPE type)
-{
-	return (type == OBJ_PLAYER);
 }
 
 void Player::OverHeatDraw(void)
@@ -45,6 +42,11 @@ void Player::OverHeatDraw(void)
 	{
 		DrawString(500, 50, "ÇnÇuÇdÇqÅ@ÇgÇdÇ`Çs", 0x00ffffff);
 	}
+}
+
+bool Player::CheckObjType(OBJ_TYPE type)
+{
+	return (type == OBJ_PLAYER);
 }
 
 void Player::Move(const int accelKey, const int turboKey)
@@ -161,11 +163,11 @@ void Player::SetMove(const GameCtrl & controller)
 		break;
 	}
 
-	if (speed <= 0)
+	if (speed < 0)
 	{
 		speed = 0;
 	}
-	if (turbo <= 20)
+	if (turbo < 20)
 	{
 		turbo = 20;
 	}
