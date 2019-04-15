@@ -38,7 +38,7 @@ private:
 
 	DIR dir;			// ﾌﾟﾚｲﾔｰの向き
 	float speed;		// ﾌﾟﾚｲﾔｰの速度
-	int turbo;			// ﾀｰﾎﾞﾒｰﾀ
+	int temperature;	// ｴﾝｼﾞﾝの温度
 	STATUS status;		// ﾌﾟﾚｲﾔｰの状態
 	int coolDownTime;	// ｵｰﾊﾞｰﾋｰﾄ状態から復帰するまでの時間
 	float tilt;			// ﾌﾟﾚｲﾔｰの傾き角度

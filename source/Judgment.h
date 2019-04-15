@@ -14,9 +14,6 @@ public:
 
 	// ÌßÚ²Ô°‚Ì‘O—Ö‚Æ“GÌßÚ²Ô°‚ÌØ±(Œã—Ö)
 	bool CheckSpin(void);
-
-	// ÌßÚ²Ô°‚ÌØ±(Œã—Ö)‚Æ“GÌßÚ²Ô°‚Ì‘O—Ö
-	bool CheckAttack(void);
 	
 	// ÌßÚ²Ô°‚Ì‘O‘Ì‚Æâ‚È‚Ç‚ÌáŠQ•¨
 	bool CheckObstacle(void);

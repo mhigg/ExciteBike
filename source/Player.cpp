@@ -5,6 +5,7 @@
 #include "Bike.h"
 #include "SceneMng.h"
 #include "GameCtrl.h"
+#include "Judgment.h"
 #include "classObj.h"
 
 
@@ -29,13 +30,13 @@ Player::~Player()
 
 void Player::Draw(void)
 {
-	VECTOR2 drawOffset = lpSceneMng.GetDrawOffset();
-
-	DrawFormatString(drawPos.x - drawOffset.x, drawPos.y, 0x00ffffff, "speed:%d turbo:%d", speed, turbo);
+	int scrollOffset = GetScroll();
+	DrawFormatString(drawOffset.x + drawPos.x - scrollOffset, drawOffset.y + drawPos.y, 0x00ffffff, "speed:%d temperature:%d", speed, temperature);
 	if (status == STATUS_OVERHEAT)
 	{
 		OverHeatDraw();
 	}
+	DrawFormatString(pos.x, pos.y + pos.z, 0x00ffffff, "pos.x:%d pos.y + pos.z:%d", pos.x, pos.y + pos.z);
 }
 
 void Player::OverHeatDraw(void)
@@ -58,25 +59,27 @@ void Player::Move(const int accelKey, const int turboKey)
 		// 押し続けている間一定速度で走行し、ｱﾆﾒｰｼｮﾝを「走行中」にする
 		speed = 20;	// ←最初少し加速、あとは一定速度(0-2-8-20くらい)
 		// 33.3ﾌﾚｰﾑに1回
-		turbo += 33;
-		if (turbo > 181)
+		temperature += 33;
+
+		if (temperature > 180)
 		{
-			turbo -= 33;
+			temperature = 180;
 			// 一定の値で止める
-			//turbo = 50;
+			//temperature = 50;
 		}
 	}
 	// Zｷｰを離すと減速していく。完全にｽﾋﾟｰﾄﾞが0になったらｱﾆﾒｰｼｮﾝを「待機」にする
 	else
 	{
 		speed -= 2;
-		turbo -= 2;
+		temperature -= 2;
 	}
+
 
 	if (turboKey)
 	{
 		speed = 20;	// ←最初から急加速　(0-18-20くらい)
-		if (turbo >= 360)
+		if (temperature >= 360)
 		{
 			status = STATUS_OVERHEAT;
 			coolDownTime = lpSceneMng.GetFram(true);
@@ -84,7 +87,7 @@ void Player::Move(const int accelKey, const int turboKey)
 		else
 		{
 			// 15ﾌﾚｰﾑに1回
-			turbo += 15;
+			temperature += 15;
 		}
 	}
 
@@ -95,10 +98,13 @@ void Player::SetMove(const GameCtrl & controller)
 	auto ctrl = controller.GetCtrl(KEY_TYPE_NOW);
 	auto ctrlOld = controller.GetCtrl(KEY_TYPE_OLD);
 
-	VECTOR distance = VGet(0,0,0);	// 移動量 x:直進 y:ｼﾞｬﾝﾌﾟ z:手前と奥
+	VECTOR distance = VGet(0, 0, 0);	// 移動量 x:直進 y:ｼﾞｬﾝﾌﾟ z:手前と奥
 
 	// ﾌﾟﾚｲﾔｰと障害物の当たり判定
-	// 
+	if (lpJudgment.CheckSpin())
+	{
+		status = STATUS_SPIN;
+	}
 
 	switch (status)
 	{
@@ -111,9 +117,9 @@ void Player::SetMove(const GameCtrl & controller)
 		// ｸｰﾙｿﾞｰﾝを通過したらﾀｰﾎﾞﾒｰﾀを最小値まで減らす
 		// if()
 		// {
-		//		turbo = 20;
+		//		temperature = 20;
 		// }
-		
+
 		Move(ctrl[KEY_INPUT_Z], ctrl[KEY_INPUT_X]);
 
 		if (ctrl[KEY_INPUT_UP] & ~ctrlOld[KEY_INPUT_UP])
@@ -147,7 +153,7 @@ void Player::SetMove(const GameCtrl & controller)
 	case STATUS_OVERHEAT:
 		// ﾀｰﾎﾞﾒｰﾀがﾏｯｸｽになったら速度を急激に下げ、強制停止させる。操作不可能
 		speed -= 5;
-		turbo = 20;
+		temperature = 20;
 		// 4秒経過後、再ｽﾀｰﾄ
 		if (lpSceneMng.GetFram(true) - coolDownTime >= 4)
 		{
@@ -157,7 +163,7 @@ void Player::SetMove(const GameCtrl & controller)
 	case STATUS_SPIN:
 		// ｽﾋﾟﾝ時はﾊﾞｲｸをｲﾝｽﾀﾝｽし、同じ方向に同じ速さで移動する(投げ出される感じ)
 		// ﾊﾞｲｸとﾌﾟﾚｲﾔｰの投げ出される移動量は異なり、投げ出される前のﾌﾟﾚｲﾔｰの速度が速いほど移動量は多くなる
-		
+
 		// 
 		AddObjList()(objList, std::make_unique<Bike>(pos, drawOffset));
 		break;
@@ -169,15 +175,16 @@ void Player::SetMove(const GameCtrl & controller)
 	{
 		speed = 0;
 	}
-	if (turbo < 20)
+	if (temperature < 20)
 	{
-		turbo = 20;
+		temperature = 20;
 	}
 
 	distance.x = speed;
-	lpSceneMng.SetDrawOffset(VECTOR2(static_cast<int>(distance.x),static_cast<int>(distance.y)));
 
 	pos.x += distance.x;
 	pos.y += distance.y;
 	pos.z += distance.z;
+	drawPos = { static_cast<int>(pos.x), static_cast<int>(pos.y + pos.z) };
+	AddScroll(distance.x);
 }

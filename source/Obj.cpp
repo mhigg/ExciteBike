@@ -55,7 +55,7 @@ void Obj::Draw(void)
 	animCnt++;
 	if (id < IMAGE_ID(imageName).size())
 	{
-		DrawGraph(drawOffset.x + pos.x, drawOffset.y + pos.y, IMAGE_ID(imageName)[id], true);
+		DrawGraph(drawOffset.x + drawPos.x - scrollOffset, drawOffset.y + drawPos.y, IMAGE_ID(imageName)[id], true);
 	}
 }
 
@@ -63,7 +63,7 @@ void Obj::Draw(unsigned int id)
 {
 	if (id < IMAGE_ID(imageName).size())
 	{
-		DrawGraph(drawOffset.x + pos.x, drawOffset.y + pos.y, IMAGE_ID(imageName)[id], true);
+		DrawGraph(drawOffset.x + drawPos.x - scrollOffset, drawOffset.y + drawPos.y, IMAGE_ID(imageName)[id], true);
 	}
 }
 
@@ -71,6 +71,17 @@ const VECTOR & Obj::GetPos(void)
 {
 	return pos;
 }
+
+void Obj::AddScroll(const int distanceX)
+{
+	scrollOffset += distanceX;
+}
+
+const int Obj::GetScroll(void)
+{
+	return scrollOffset;
+}
+
 
 void Obj::SetPos(VECTOR pos)
 {
@@ -106,4 +117,3 @@ std::string Obj::GetAnim(void)
 {
 	return animName;
 }
-

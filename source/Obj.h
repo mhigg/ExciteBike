@@ -53,6 +53,7 @@ public:
 	);
 	bool SetAnim(std::string animName);
 	std::string GetAnim(void);
+	const int GetScroll(void);
 	virtual bool CheckDeath(void) { return false; };	// Player:€–S”»’è
 	virtual bool CheckObjType(OBJ_TYPE type) = 0;
 
@@ -61,8 +62,11 @@ private:
 
 	std::string animName;	// •\¦‚·‚é±ÆÒ°¼®İ–¼
 	std::map<std::string, int[ANIM_TBL_MAX]> animTable;
+	int scrollOffset;			// ½¸Û°Ù‚É‚æ‚é•`‰æ‚Ì‚¸‚ê—Ê(‰¡•ûŒü‚Ì‚İ)
 
 protected:
+	void AddScroll(const int distanceX);	// ½¸Û°Ù—Ê‚Ì‘‰Á
+
 	std::string imageName;	// •\¦‚·‚é‰æ‘œ‚ÌÌ§²Ù–¼
 	VECTOR2 divSize;		// ‰æ‘œ‚Ì•ªŠ„»²½Ş
 	VECTOR2 divCnt;			// ‰æ‘œ‚Ì•ªŠ„”
