@@ -52,6 +52,11 @@ bool Player::CheckObjType(OBJ_TYPE type)
 	return (type == OBJ_PLAYER);
 }
 
+bool Player::CheckAngleType(ANGLE_TYPE type)
+{
+	return (type == tilt);
+}
+
 void Player::Move(const int accelKey, const int turboKey)
 {
 	if (accelKey)

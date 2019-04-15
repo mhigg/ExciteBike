@@ -2,6 +2,7 @@
 #include <DxLib.h>
 #include <string>
 #include <map>
+#include "ANGLE_TYPE.h"
 #include "VECTOR2.h"
 #include "classObj.h"
 
@@ -17,13 +18,6 @@ enum OBJ_TYPE {
 	OBJ_BIKE,			// ﾊﾞｲｸ
 	OBJ_OBSTACLE,		// 障害物
 	OBJ_MAX
-};
-
-enum ANGLE_TYPE {
-	ANGLE_LOOSE,		// 緩い斜面(30度くらい)
-	ANGLE_NORMAL,		// 普通の斜面(45度くらい)
-	ANGLE_STEEP,		// 急な斜面(60度くらい)
-	ANGLE_MAX
 };
 
 class GameCtrl;
@@ -63,6 +57,7 @@ public:
 	const int GetScroll(void);
 	virtual bool CheckDeath(void) { return false; };	// Player:死亡判定
 	virtual bool CheckObjType(OBJ_TYPE type) = 0;
+	virtual bool CheckAngleType(ANGLE_TYPE type) = 0;	// 坂/ﾌﾟﾚｲﾔｰの現在の角度ﾀｲﾌﾟを確認する
 
 private:
 	virtual void SetMove(const GameCtrl &controller) = 0;

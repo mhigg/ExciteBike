@@ -2,7 +2,6 @@
 #include "Bike.h"
 
 
-
 Bike::Bike()
 {
 }
@@ -20,6 +19,11 @@ Bike::~Bike()
 bool Bike::CheckObjType(OBJ_TYPE type)
 {
 	return (type == OBJ_BIKE);
+}
+
+bool Bike::CheckAngleType(ANGLE_TYPE type)
+{
+	return (type == ANGLE_TYPE::STRAIGHT);
 }
 
 void Bike::SetMove(const GameCtrl & controller)

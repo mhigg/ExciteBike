@@ -5,23 +5,6 @@
 #include "VECTOR2.h"
 #include "ImageMng.h"
 
-struct ActionHeader {
-	float version;			// ﾌｧｲﾙのﾊﾞｰｼﾞｮﾝ
-	std::string fileName;	// ﾌｧｲﾙ名
-	int actCnt;				// ｱｸｼｮﾝの種類数 ←この個数分だけforﾙｰﾌﾟしてｱｸｼｮﾝごとにまとめる
-};
-
-struct ActionData {
-	VECTOR2 rect;			// 分割開始位置
-	int width;				// 1ｺﾏの画像の横の長さ
-	int height;				// 1ｺﾏの画像の縦の長さ
-	VECTOR2 center;			// 1ｺﾏの画像の中心点
-	int duration;			// ｱﾆﾒｰｼｮﾝのｺﾏ間隔
-	int actRcType;			// 当たり判定用矩形の種類
-	VECTOR2 actRect;		// 当たり判定用矩形の開始位置
-	int actRcWidth;			// 当たり判定用矩形の横の長さ
-	int actRcHeight;		// 当たり判定用矩形の縦の長さ
-};
 
 ImageMng::ImageMng()
 {
@@ -69,7 +52,7 @@ void ImageMng::ReadGraph(void)
 {
 	// ------------------ ﾃﾞｰﾀﾍｯﾀﾞｰ読み込み --------------------------
 
-	ActionHeader header = {};
+	header = {};
 
 	std::string actpath = "image/player.act";
 	auto f = DxLib::FileRead_open(actpath.c_str());
@@ -86,7 +69,7 @@ void ImageMng::ReadGraph(void)
 
 	// -------------------- ﾃﾞｰﾀ部読み込み ----------------------------
 	
-	std::map<std::string, std::vector<ActionData>> data = {};
+	data = {};
 
 	for (int actIdx = 0; actIdx < header.actCnt; actIdx++)
 	{
@@ -131,5 +114,4 @@ void ImageMng::ReadGraph(void)
 		imageMap[path].resize(1);
 		imageMap[path][0] = LoadGraph(path.c_str(), false);
 	}
-
 }

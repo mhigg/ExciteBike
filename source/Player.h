@@ -30,6 +30,7 @@ public:
 
 	void Draw(void);
 	bool CheckObjType(OBJ_TYPE type);
+	bool CheckAngleType(ANGLE_TYPE type);
 
 private:
 	void SetMove(const GameCtrl & controller);
@@ -41,7 +42,7 @@ private:
 	int temperature;	// ´İ¼Şİ‚Ì‰·“x
 	STATUS status;		// ÌßÚ²Ô°‚Ìó‘Ô
 	int coolDownTime;	// µ°ÊŞ°Ë°Äó‘Ô‚©‚ç•œ‹A‚·‚é‚Ü‚Å‚ÌŠÔ
-	float tilt;			// ÌßÚ²Ô°‚ÌŒX‚«Šp“x
+	ANGLE_TYPE tilt;	// ÌßÚ²Ô°‚ÌŒX‚«Šp“x
 
 	VECTOR2 tmpPos;
 

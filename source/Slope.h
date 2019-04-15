@@ -11,7 +11,7 @@ public:
 
 	bool CheckObjType(OBJ_TYPE type);
 	OBSTACLE CheckType(void);
-	bool CheckAngleType(ANGLE_TYPE type);
+	bool CheckAngleType(ANGLE_TYPE type);	// â‚ÌŠp“xÀ²Ìß‚ğ’²‚×‚é
 
 private:
 	VECTOR2 ground;		// â‚ÌÚ’n“_
