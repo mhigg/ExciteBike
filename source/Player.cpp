@@ -128,6 +128,7 @@ void Player::SetMove(const GameCtrl & controller)
 			// 押し続けていると1ﾚｰﾝずつ左に移動していく
 			// 押している間はｱﾆﾒｰｼｮﾝを「左向き」にする
 			distance.z--;
+			dir = DIR_LEFT;
 		}
 
 		if (ctrl[KEY_INPUT_DOWN] & ~ctrlOld[KEY_INPUT_DOWN])
@@ -136,6 +137,7 @@ void Player::SetMove(const GameCtrl & controller)
 			// 押し続けていると1ﾚｰﾝずつ右に移動していく
 			// 押している間はｱﾆﾒｰｼｮﾝを「右向き」にする
 			distance.z++;
+			dir = DIR_RIGHT;
 		}
 
 		// ｷｰを離したらﾚｰﾝ移動が完了するまで向きは戻さず、ﾌﾟﾚｲﾔｰとﾚｰﾝのX軸が一致したら向きを戻す→接地判定
@@ -154,8 +156,8 @@ void Player::SetMove(const GameCtrl & controller)
 		// ﾀｰﾎﾞﾒｰﾀがﾏｯｸｽになったら速度を急激に下げ、強制停止させる。操作不可能
 		speed -= 5;
 		temperature = 20;
-		// 4秒経過後、再ｽﾀｰﾄ
-		if (lpSceneMng.GetFram(true) - coolDownTime >= 4)
+		// 5秒経過後、再ｽﾀｰﾄ
+		if (lpSceneMng.GetFram(true) - coolDownTime >= 5)
 		{
 			status = STATUS_NORMAL;
 		}

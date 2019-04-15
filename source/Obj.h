@@ -19,6 +19,13 @@ enum OBJ_TYPE {
 	OBJ_MAX
 };
 
+enum ANGLE_TYPE {
+	ANGLE_LOOSE,		// ŠÉ‚¢ŽÎ–Ê(30“x‚­‚ç‚¢)
+	ANGLE_NORMAL,		// •’Ê‚ÌŽÎ–Ê(45“x‚­‚ç‚¢)
+	ANGLE_STEEP,		// ‹}‚ÈŽÎ–Ê(60“x‚­‚ç‚¢)
+	ANGLE_MAX
+};
+
 class GameCtrl;
 
 class Obj

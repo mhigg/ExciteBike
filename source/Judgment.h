@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Obstacle.h"
 
 #define lpJudgment Judgment::GetInstance()
 
