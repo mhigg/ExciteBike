@@ -244,7 +244,7 @@ void Player::SetMove(const GameCtrl & controller)
 			inputFram++;
 			if (inputFram >= KEY_GET_RANGE)
 			{
-//				tilt++;
+				tilt++;
 				inputFram = 0;
 			}
 		}
