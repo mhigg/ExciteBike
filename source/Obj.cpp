@@ -59,13 +59,23 @@ void Obj::Draw(void)
 	unsigned int id = 0;
 	if (animTable.find(animName) != animTable.end())
 	{
-		id = (animTable[animName][ANIM_TBL_START_ID])
-		  + ((animCnt / animTable[animName][ANIM_TBL_INV]) % animTable[animName][ANIM_TBL_FRAME]);
+		int count = (animCnt / animTable[animName][ANIM_TBL_INV]);
+		if (animTable[animName][ANIM_TBL_LOOP]
+		 || count < animTable[animName][ANIM_TBL_FRAME])
+		{
+			count %= animTable[animName][ANIM_TBL_FRAME];
+		}
+		else
+		{
+			count = animTable[animName][ANIM_TBL_FRAME] - 1;
+			animEndFlag = true;
+		}
+			id = animTable[animName][ANIM_TBL_START_ID] + count;
 	}
 	animCnt++;
-	if (id < IMAGE_ID(imageName).size())
+	if (id < lpImageMng.GetActID(imageName, animName).size())
 	{
-		DrawGraph(drawOffset.x + drawPos.x - scrollOffset, drawOffset.y + drawPos.y, IMAGE_ID(imageName)[id], true);
+		DrawGraph(drawOffset.x + drawPos.x - scrollOffset, drawOffset.y + drawPos.y, lpImageMng.GetActID(imageName, animName)[id], true);
 	}
 }
 
@@ -98,11 +108,12 @@ void Obj::SetPos(VECTOR pos)
 	Obj::pos = pos;
 }
 
-bool Obj::AddAnim(std::string animName, int id_x, int id_y, int frame, int inv)
+bool Obj::AddAnim(std::string animName, int id, int frame, int duration, bool loop)
 {
-	animTable[animName][ANIM_TBL_START_ID] = id_y * divCnt.x + id_x;
+	animTable[animName][ANIM_TBL_START_ID] = id;
 	animTable[animName][ANIM_TBL_FRAME] = frame;
-	animTable[animName][ANIM_TBL_INV] = inv;
+	animTable[animName][ANIM_TBL_INV] = duration;
+	animTable[animName][ANIM_TBL_LOOP] = loop;
 	return true;
 }
 

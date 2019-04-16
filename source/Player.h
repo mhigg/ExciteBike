@@ -3,6 +3,9 @@
 #include "VECTOR2.h"
 #include "classObj.h"
 
+constexpr int READY_TIME = 600;
+constexpr int COOLDOWN = 300;
+
 enum DIR {
 	DIR_NONE,
 	DIR_RIGHT,		// ハンドル右切り
@@ -14,6 +17,7 @@ enum DIR {
 
 enum STATUS {
 	STATUS_BEF_START,	// ｽﾀｰﾄ地点(発進前)
+	STATUS_WAIT,		// 待機状態
 	STATUS_NORMAL,		// 通常状態
 	STATUS_JUMP,		// ｼﾞｬﾝﾌﾟ中
 	STATUS_OVERHEAT,	// ｵｰﾊﾞｰﾋｰﾄ中
@@ -29,21 +33,24 @@ public:
 	Player(VECTOR SetUpPos, VECTOR2 drawOffset);
 	~Player();
 
-	void Draw(void);
+	bool initAnim(void);
+
+	//void Draw(void);
 	bool CheckObjType(OBJ_TYPE type);
 	bool CheckAngleType(ANGLE_TYPE type);
 
 private:
 	void SetMove(const GameCtrl & controller);
 	void OverHeatDraw(void);
-	void Move(const int accelKey, const int turboKey);	// ｱｸｾﾙ・ﾀｰﾎﾞ処理
+	bool Move(const int accelKey, const int turboKey);	// ｱｸｾﾙ・ﾀｰﾎﾞ処理
 
 	DIR dir;			// ﾌﾟﾚｲﾔｰの向き
 	float speed;		// ﾌﾟﾚｲﾔｰの速度
 	int temperature;	// ｴﾝｼﾞﾝの温度
 	STATUS status;		// ﾌﾟﾚｲﾔｰの状態
-	int coolDownTime;	// ｵｰﾊﾞｰﾋｰﾄ状態から復帰するまでの時間
 	ANGLE_TYPE tilt;	// ﾌﾟﾚｲﾔｰの傾き角度
+
+	int unCtrlTime;		// 操作不能状態の経過時間
 
 	VECTOR2 tmpPos;
 

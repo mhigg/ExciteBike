@@ -10,6 +10,7 @@ enum ANIM_TBL {
 	ANIM_TBL_START_ID,		// ±ÆÒ°¼®İ‚ÌŠJn
 	ANIM_TBL_FRAME,			// ±ÆÒ°¼®İ‚ÌºÏ”
 	ANIM_TBL_INV,			// ºÏ‚²‚Æ‚ÌŠÔŠu
+	ANIM_TBL_LOOP,			// Ù°Ìß‚·‚é‚©‚Ç‚¤‚©
 	ANIM_TBL_MAX
 };
 
@@ -49,20 +50,20 @@ public:
 	void UpDate(const GameCtrl &controller);	// î•ñXV	ºİÄÛ°×°©‘Ì‚ÌÎß²İÀ‚ğ“n‚·
 	virtual void Draw(void);					// •`‰æ
 	void Draw(unsigned int id);					// IDw’è•`‰æ
-//	void Draw()
+//	void Draw();
 	const VECTOR &GetPos(void);					// À•Wæ“¾ŠÖ”
 
 	bool AddAnim(
 		std::string animName,	// ±ÆÒ°¼®İ‚Ì–¼‘O
-		int id_x,				// “®‚«
-		int id_y,				// í•Ê
+		int id,					// í•Ê
 		int frame,				// ºÏ”
-		int inv					// ŠÔŠu‚Ìİ’è
+		int duration,			// ŠÔŠu‚Ìİ’è
+		bool loop				// Ù°Ìß‚·‚é‚©‚Ç‚¤‚©
 	);
 	bool SetAnim(std::string animName);
 	std::string GetAnim(void);
 	const int GetScroll(void);
-	virtual bool CheckDeath(void) { return false; };	// Player:€–S”»’è
+	virtual bool CheckSpin(void) { return false; };		// Player:€–S”»’è
 	virtual bool CheckObjType(OBJ_TYPE type) = 0;
 	virtual bool CheckAngleType(ANGLE_TYPE type) = 0;	// â/ÌßÚ²Ô°‚ÌŒ»İ‚ÌŠp“xÀ²Ìß‚ğŠm”F‚·‚é
 
@@ -71,6 +72,8 @@ private:
 
 	std::string animName;	// •\¦‚·‚é±ÆÒ°¼®İ–¼
 	std::map<std::string, int[ANIM_TBL_MAX]> animTable;
+	bool animEndFlag;
+
 	int scrollOffset;			// ½¸Û°Ù‚É‚æ‚é•`‰æ‚Ì‚¸‚ê—Ê(‰¡•ûŒü‚Ì‚İ)
 
 protected:

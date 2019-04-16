@@ -41,12 +41,13 @@ void GameScene::Draw()
 
 	// ¶Ò×”ÍˆÍ‚©‚çŠ®‘S‚Éo‚½•”•ª‚Í•`‰æ‚µ‚È‚¢
 
-	
 
 	for (auto itr = objList->begin(); itr != objList->end(); itr++)
 	{
 		(*itr)->Draw();
 	}
+
+	DrawGraph(500, 500, lpImageMng.GetActID("image/player.act", "Wheelie")[4], true);
 
 	ScreenFlip();
 }
