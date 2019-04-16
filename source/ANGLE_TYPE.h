@@ -12,3 +12,14 @@ enum class ANGLE_TYPE
 	MAX
 };
 
+// FIRE_DIR‚Ìæ“ª‚ð•Ô‚·
+ANGLE_TYPE begin(ANGLE_TYPE);
+
+// FIRE_DIR‚ÌÅŒã”ö‚ð•Ô‚·
+ANGLE_TYPE end(ANGLE_TYPE);
+
+// ²Ý¸ØÒÝÄ
+ANGLE_TYPE operator++(ANGLE_TYPE& dir);
+
+// ŽQÆ‚Ì±ÄÞÚ½‚ð‚»‚Ì‚Ü‚Ü•Ô‚·	
+ANGLE_TYPE operator*(ANGLE_TYPE& dir);

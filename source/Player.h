@@ -1,4 +1,5 @@
 #pragma once
+#include <type_traits>
 #include "Obj.h"
 #include "VECTOR2.h"
 #include "classObj.h"
@@ -35,7 +36,7 @@ public:
 
 	bool initAnim(void);
 
-	//void Draw(void);
+	void Draw(void);
 	bool CheckObjType(OBJ_TYPE type);
 	bool CheckAngleType(ANGLE_TYPE type);
 
@@ -47,10 +48,14 @@ private:
 	DIR dir;			// ﾌﾟﾚｲﾔｰの向き
 	float speed;		// ﾌﾟﾚｲﾔｰの速度
 	int temperature;	// ｴﾝｼﾞﾝの温度
+	int tmpTemp;		// 仮の温度
+	bool turboFlag;		// ﾀｰﾎﾞによる温度半分超えをしたかどうか
 	STATUS status;		// ﾌﾟﾚｲﾔｰの状態
 	ANGLE_TYPE tilt;	// ﾌﾟﾚｲﾔｰの傾き角度
 
 	int unCtrlTime;		// 操作不能状態の経過時間
+
+	int inputFram;
 
 	VECTOR2 tmpPos;
 

@@ -70,12 +70,13 @@ void Obj::Draw(void)
 			count = animTable[animName][ANIM_TBL_FRAME] - 1;
 			animEndFlag = true;
 		}
-			id = animTable[animName][ANIM_TBL_START_ID] + count;
+		id = animTable[animName][ANIM_TBL_START_ID] + count;
 	}
 	animCnt++;
 	if (id < lpImageMng.GetActID(imageName, animName).size())
 	{
 		DrawGraph(drawOffset.x + drawPos.x - scrollOffset, drawOffset.y + drawPos.y, lpImageMng.GetActID(imageName, animName)[id], true);
+		_RPTN(_CRT_WARN, "id : %d\n", id);
 	}
 }
 
