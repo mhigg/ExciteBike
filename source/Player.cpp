@@ -51,22 +51,26 @@ bool Player::initAnim(void)
 	return true;
 }
 
-void Player::Draw(void)
-{
-	int scrollOffset = GetScroll();
-	DrawFormatString(drawOffset.x + drawPos.x - scrollOffset, drawOffset.y + drawPos.y, 0x00ffffff, "speed:%d temperature:%d", speed, temperature);
-	if (status == STATUS_OVERHEAT)
-	{
-		OverHeatDraw();
-	}
-	DrawFormatString(pos.x, pos.y + pos.z, 0x00ffffff, "pos.x:%d pos.y + pos.z:%d", pos.x, pos.y + pos.z);
-}
+//void Player::Draw(void)
+//{
+	//int scrollOffset = GetScroll();
+	//DrawFormatString(drawOffset.x + drawPos.x - scrollOffset, drawOffset.y + drawPos.y, 0x00ffffff, "speed:%d temperature:%d", speed, temperature);
+	//if (status == STATUS_OVERHEAT)
+	//{
+	//	OverHeatDraw();
+	//}
+	//DrawFormatString(pos.x, pos.y + pos.z, 0x00ffffff, "pos.x:%d pos.y + pos.z:%d", pos.x, pos.y + pos.z);
+//}
 
 void Player::OverHeatDraw(void)
 {
-	if (status == STATUS_OVERHEAT)
+	if ((unCtrlTime % 20) / 3 == 0)
 	{
 		DrawString(500, 50, "ÇnÇuÇdÇqÅ@ÇgÇdÇ`Çs", 0x00ffffff);
+	}
+	if (unCtrlTime < 0)
+	{
+		DrawString(550, 50, "ÇfÇn", 0x00ffffff);
 	}
 }
 
@@ -180,6 +184,26 @@ void Player::SetMove(const GameCtrl & controller)
 		{
 			status = STATUS_NORMAL;
 		}
+
+		// ç∂âEìØéûâüÇµéûÇÕâEóDêÊ
+		if (ctrl[KEY_INPUT_UP])
+		{
+			// 1âÒâüÇ∑Ç∆1⁄∞›ï™ç∂(âÊñ è„Ç≈ÇÃè„)Ç…à⁄ìÆÇ∑ÇÈ
+			// âüÇµë±ÇØÇƒÇ¢ÇÈÇ∆1⁄∞›Ç∏Ç¬ç∂Ç…à⁄ìÆÇµÇƒÇ¢Ç≠
+			SetAnim("Left");
+			distance.z--;
+			dir = DIR_LEFT;
+		}
+
+		if (ctrl[KEY_INPUT_DOWN])
+		{
+			// 1âÒâüÇ∑Ç∆1⁄∞›ï™âE(âÊñ è„Ç≈ÇÃâ∫)Ç…à⁄ìÆÇ∑ÇÈ
+			// âüÇµë±ÇØÇƒÇ¢ÇÈÇ∆1⁄∞›Ç∏Ç¬âEÇ…à⁄ìÆÇµÇƒÇ¢Ç≠
+			SetAnim("Right");
+			distance.z++;
+			dir = DIR_RIGHT;
+		}
+
 		break;
 	case STATUS_NORMAL:
 		// ∏∞Ÿøﬁ∞›Çí âﬂÇµÇΩÇÁ¿∞Œﬁ“∞¿Çç≈è¨ílÇ‹Ç≈å∏ÇÁÇ∑
@@ -252,7 +276,14 @@ void Player::SetMove(const GameCtrl & controller)
 
 		// 
 		AddObjList()(objList, std::make_unique<Bike>(pos, drawOffset));
+		reStartCnt = speed * tmpTemp;
 		break;
+	case STATUS_RESTART:
+		if ((ctrl[KEY_INPUT_Z] & ~ctrlOld[KEY_INPUT_Z])
+		 || (ctrl[KEY_INPUT_X] & ~ctrlOld[KEY_INPUT_X]))
+		{
+			reStartCnt--;
+		}
 	default:
 		break;
 	}
@@ -276,5 +307,5 @@ void Player::SetMove(const GameCtrl & controller)
 	drawPos = { static_cast<int>(pos.x), static_cast<int>(pos.y + pos.z) };
 	AddScroll(distance.x);
 
-	_RPTN(_CRT_WARN, "pos.x:%d, pos.y:%d, pos.z:%d, temp:%d\n", static_cast<int>(pos.x), static_cast<int>(pos.y), static_cast<int>(pos.z), temperature);
+//	_RPTN(_CRT_WARN, "pos.x:%d, pos.y:%d, pos.z:%d, temp:%d\n", static_cast<int>(pos.x), static_cast<int>(pos.y), static_cast<int>(pos.z), temperature);
 }

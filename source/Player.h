@@ -23,6 +23,7 @@ enum STATUS {
 	STATUS_JUMP,		// ｼﾞｬﾝﾌﾟ中
 	STATUS_OVERHEAT,	// ｵｰﾊﾞｰﾋｰﾄ中
 	STATUS_SPIN,		// ｽﾋﾟﾝ中
+	STATUS_RESTART,		// ｽﾋﾟﾝからの復帰
 	STATUS_MAX
 };
 
@@ -36,7 +37,7 @@ public:
 
 	bool initAnim(void);
 
-	void Draw(void);
+	//void Draw(void);
 	bool CheckObjType(OBJ_TYPE type);
 	bool CheckAngleType(ANGLE_TYPE type);
 
@@ -54,6 +55,7 @@ private:
 	ANGLE_TYPE tilt;	// ﾌﾟﾚｲﾔｰの傾き角度
 
 	int unCtrlTime;		// 操作不能状態の経過時間
+	int reStartCnt;		// 再ｽﾀｰﾄまでの時間
 
 	int inputFram;
 

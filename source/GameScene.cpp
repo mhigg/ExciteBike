@@ -47,11 +47,6 @@ void GameScene::Draw()
 		(*itr)->Draw();
 	}
 
-	auto iid = lpImageMng.GetActID("image/player.act", "ForwardRoll")[4];
-	auto id = lpImageMng.GetActID("image/player.act", "Wheelie")[4];
-	DrawGraph(500, 350, iid, true);
-	DrawGraph(500, 500, id, true);
-
 	ScreenFlip();
 }
 
