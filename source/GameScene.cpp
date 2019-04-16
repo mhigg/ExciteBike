@@ -28,7 +28,6 @@ int GameScene::Init()
 	objList->clear();
 	lpCourceCtrl.SetUpGameObj(objList, false);
 	lpSceneMng.SetDrawOffset(VECTOR2(GAME_SCREEN_X, GAME_SCREEN_Y));
-	lpImageMng.ReadGraph();
 
 	return 0;
 }
@@ -48,8 +47,6 @@ void GameScene::Draw()
 	{
 		(*itr)->Draw();
 	}
-
-	DrawGraph(0, 0, lpImageMng.GetID("image/player.png")[0],true);
 
 	ScreenFlip();
 }

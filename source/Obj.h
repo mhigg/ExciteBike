@@ -29,20 +29,27 @@ public:
 	Obj();
 	Obj(VECTOR2 drawOffset);	// 受け取ったdrawOffsetを自分の持つdrawOffsetに入れる
 	bool init(
-		std::string fileName,
-		VECTOR2 divSize,
-		VECTOR2 divCnt
-	);	// 画像のﾌｧｲﾙ名,分割ｻｲｽﾞ,分割数の初期化
+		std::string fileName,	// 画像のﾌｧｲﾙ名
+		VECTOR2 divSize,		// 分割ｻｲｽﾞ
+		VECTOR2 divCnt			// 分割数の初期化
+	);
 	bool init(
-		std::string fileName,
-		VECTOR2 divSize,
-		VECTOR2 divCnt,
-		VECTOR pos
-	);	// 画像のﾌｧｲﾙ名,分割ｻｲｽﾞ,分割数の初期化,座標
+		std::string fileName,	// 画像のﾌｧｲﾙ名
+		VECTOR2 divSize,		// 分割ｻｲｽﾞ
+		VECTOR2 divCnt,			// 分割数の初期化
+		VECTOR pos				// 座標
+	);
+	bool init(
+		std::string fileName,	// 画像のﾌｧｲﾙ名(act形式)
+		std::string actName,	// ｱｸｼｮﾝ名
+		VECTOR pos				// 座標
+	);
+
 	virtual ~Obj();
 	void UpDate(const GameCtrl &controller);	// 情報更新	ｺﾝﾄﾛｰﾗｰ自体のﾎﾟｲﾝﾀを渡す
 	virtual void Draw(void);					// 描画
 	void Draw(unsigned int id);					// ID指定描画
+//	void Draw()
 	const VECTOR &GetPos(void);					// 座標取得関数
 
 	bool AddAnim(

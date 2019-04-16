@@ -11,14 +11,13 @@
 
 Player::Player()
 {
-	init("player.png", VECTOR2(30, 30), VECTOR2(5, 6));
 	status = STATUS_NORMAL;
 	drawPos = { 0,0 };
 }
 
 Player::Player(VECTOR SetUpPos, VECTOR2 drawOffset):Obj(drawOffset)
 {
-	init("player.png", VECTOR2(30, 30), VECTOR2(5, 6), SetUpPos);
+	init("image/player.act", "Running", SetUpPos);
 	status = STATUS_NORMAL;
 	drawPos = { static_cast<int>(SetUpPos.x), static_cast<int>(SetUpPos.y + SetUpPos.z) };
 }

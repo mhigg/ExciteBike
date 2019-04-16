@@ -48,30 +48,64 @@ const VEC_INT & ImageMng::GetID(std::string f_name, VECTOR2 divSize, VECTOR2 div
 	return imageMap[f_name];
 }
 
-void ImageMng::ReadGraph(void)
+const VEC_INT & ImageMng::GetActID(std::string f_name, std::string actName)
+{
+	if (imageMap.find(actName) == imageMap.end())
+	{
+		auto actData = GetAct(f_name, actName);
+		auto animCnt = actData.size();
+		imageMap[actName].resize(animCnt);
+		for (int actIdx = 0; actIdx < animCnt; actIdx++)
+		{
+			LoadDivGraph(
+				header[f_name].fileName.c_str(),
+				1,
+				actData[actIdx].rect.x,
+				actData[actIdx].rect.y,
+				actData[actIdx].width,
+				actData[actIdx].height,
+				&imageMap[actName][actIdx],
+				true
+			);
+		}
+	}
+	return imageMap[actName];
+}
+
+const VEC_ACT & ImageMng::GetAct(std::string f_name, std::string actName)
+{
+	if (header.find(f_name) == header.end())
+	{
+		ReadBinary(f_name);
+	}
+
+	return data[actName];
+}
+
+void ImageMng::ReadBinary(std::string f_name)
 {
 	// ------------------ ÃÞ°ÀÍ¯ÀÞ°“Ç‚Ýž‚Ý --------------------------
 
 	header = {};
 
-	std::string actpath = "image/player.act";
+	std::string actpath = f_name;	// actÌ§²Ù
 	auto f = DxLib::FileRead_open(actpath.c_str());
-	FileRead_read(&header.version, sizeof(header.version), f);
+	FileRead_read(&header[actpath].version, sizeof(header[actpath].version), f);
 	int namesize;
 	FileRead_read(&namesize, sizeof(namesize), f);
-	header.fileName.resize(namesize);
-	FileRead_read(&header.fileName[0], namesize, f);
+	header[actpath].fileName.resize(namesize);
+	FileRead_read(&header[actpath].fileName[0], namesize, f);
 
 	auto path = actpath.substr(0, actpath.rfind('/') + 1);
-	path += header.fileName;
+	header[actpath].fileName = path + header[actpath].fileName;
 
-	FileRead_read(&header.actCnt, sizeof(header.actCnt), f);
+	FileRead_read(&header[actpath].actCnt, sizeof(header[actpath].actCnt), f);
 
 	// -------------------- ÃÞ°À•”“Ç‚Ýž‚Ý ----------------------------
-	
+
 	data = {};
 
-	for (int actIdx = 0; actIdx < header.actCnt; actIdx++)
+	for (int actIdx = 0; actIdx < header[actpath].actCnt; actIdx++)
 	{
 		int actNameSize;		// ±¸¼®Ý–¼‚Ì»²½Þ
 		std::string actName;	// ±¸¼®Ý–¼
@@ -106,12 +140,5 @@ void ImageMng::ReadGraph(void)
 			}
 		}
 	}
-
-// ------------------------------------------------------------------
-
-	if (imageMap.find(path) == imageMap.end())
-	{
-		imageMap[path].resize(1);
-		imageMap[path][0] = LoadGraph(path.c_str(), false);
-	}
+	FileRead_close(f);
 }

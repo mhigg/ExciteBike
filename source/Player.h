@@ -4,6 +4,7 @@
 #include "classObj.h"
 
 enum DIR {
+	DIR_NONE,
 	DIR_RIGHT,		// ハンドル右切り
 	DIR_LEFT,		// ハンドル左切り
 	DIR_UP,			// ジャンプ中：上向き

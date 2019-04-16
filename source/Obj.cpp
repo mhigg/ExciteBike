@@ -30,6 +30,16 @@ bool Obj::init(std::string fileName, VECTOR2 divSize, VECTOR2 divCnt, VECTOR pos
 	return true;
 }
 
+bool Obj::init(std::string fileName, std::string actName, VECTOR pos)
+{
+	lpImageMng.GetActID(fileName, actName);
+	imageName = fileName;
+	SetPos(pos);
+	return true;
+}
+
+
+
 Obj::~Obj()
 {
 

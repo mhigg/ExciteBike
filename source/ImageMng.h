@@ -38,19 +38,24 @@ public:
 		return s_instance;
 	}
 
-	//LoadGraph用
+	// LoadGraph用
 	const VEC_INT& GetID(std::string f_name);
-	//LoadDivGraph対応
+	// LoadDivGraph対応
 	const VEC_INT& GetID(std::string f_name, VECTOR2 divSize, VECTOR2 divCnt);
+	// 読み込んだﾃﾞｰﾀから指定したｱｸｼｮﾝ名の画像を呼び出す
+	const VEC_INT& GetActID(std::string f_name, std::string actName);
+	// ActionDataを読み込み
+	const VEC_ACT& GetAct(std::string f_name, std::string actName);
 
-	// ﾊﾞｲﾅﾘﾃﾞｰﾀの読み込み
-	void ReadGraph(void);
 
 private:
 	ImageMng();
 	~ImageMng();
 
+	// ﾊﾞｲﾅﾘﾃﾞｰﾀの読み込み 引数はactﾌｧｲﾙ
+	void ReadBinary(std::string f_name);
+
 	std::map<std::string, VEC_INT> imageMap;
-	ActionHeader header;
+	std::map<std::string, ActionHeader> header;
 	std::map<std::string, VEC_ACT> data;
 };
