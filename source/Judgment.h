@@ -16,7 +16,7 @@ public:
 	bool CheckSpin(void);
 	
 	// ÌßÚ²Ô°‚Ì‘O‘Ì‚Æâ‚È‚Ç‚ÌáŠQ•¨
-	bool CheckObstacle(void);
+	bool CheckObstacle(VECTOR2 actRect, VECTOR2 RectSize);
 
 	// ÌßÚ²Ô°‚ÌÚ’n
 	bool CheckIsGround(void);

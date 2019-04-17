@@ -1,5 +1,7 @@
 #pragma once
 #include "BaseScene.h"
+#include "classObj.h"
+
 class DesignScene :
 	public BaseScene
 {
@@ -12,5 +14,9 @@ public:
 private:
 	int Init();
 
+	void SelectDraw(void);
+	void DesignDraw(void);
+
+	sharedListObj objList;
 };
 

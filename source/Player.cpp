@@ -4,6 +4,7 @@
 #include <DxLib.h>
 #include "Player.h"
 #include "Bike.h"
+#include "Slope.h"
 #include "SceneMng.h"
 #include "ImageMng.h"
 #include "GameCtrl.h"
@@ -166,6 +167,40 @@ void Player::SetMove(const GameCtrl & controller)
 		status = STATUS_SPIN;
 	}
 
+	auto Tilt = [&](auto ctrl) {
+		
+			// â‚Æ“–‚½‚Á‚Ä‚¢‚½‚ç
+
+			if(1)
+			{
+				tilt = Slope::CheckAngleType();
+			}
+		else
+		{
+			if (ctrl[KEY_INPUT_LEFT])
+			{
+				inputFram++;
+				if ((inputFram >= KEY_GET_RANGE)
+					|| (tilt == ANGLE_TYPE::STEEP && inputFram >= (KEY_GET_RANGE * 2)))
+				{
+					tilt++;
+					inputFram = 0;
+				}
+			}
+
+			// ‘OŒX—Dæ
+			if (ctrl[KEY_INPUT_RIGHT] & ~ctrl[KEY_INPUT_LEFT])
+			{
+				inputFram++;
+				if (inputFram >= KEY_GET_RANGE)
+				{
+					tilt--;
+					inputFram = 0;
+				}
+			}
+		}
+	};
+
 	switch (status)
 	{
 	case STATUS_BEF_START:
@@ -238,16 +273,6 @@ void Player::SetMove(const GameCtrl & controller)
 
 		// ·°‚ð—£‚µ‚½‚çÚ°ÝˆÚ“®‚ªŠ®—¹‚·‚é‚Ü‚ÅŒü‚«‚Í–ß‚³‚¸AÌßÚ²Ô°‚ÆÚ°Ý‚ÌXŽ²‚ªˆê’v‚µ‚½‚çŒü‚«‚ð–ß‚·¨Ú’n”»’è
 		// ¶‰EˆÚ“®Žž‚ÍAXŽ²•ûŒü‚ÆYŽ²•ûŒü‚Ì—¼•û‚ÉˆÚ“®‚·‚é(ÍÞ¸ÄÙ)
-
-		if (ctrl[KEY_INPUT_LEFT])
-		{
-			inputFram++;
-			if (inputFram >= KEY_GET_RANGE)
-			{
-				tilt++;
-				inputFram = 0;
-			}
-		}
 
 		break;
 	case STATUS_JUMP:

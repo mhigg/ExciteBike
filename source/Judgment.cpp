@@ -11,12 +11,12 @@ bool Judgment::CheckSpin(void)
 	return false;
 }
 
-bool Judgment::CheckObstacle(void)
+bool Judgment::CheckObstacle(VECTOR2 actRect, VECTOR2 RectSize)
 {
 	// ﾌﾟﾚｲﾔｰの前輪とｵﾌﾞｼﾞｪｸﾄが当たったらtrue
 
 	// SLOPEなら上り坂の開始点と頂点、下り坂の開始点と終了点
-
+	
 
 	// RECTANGLEなら左上と右下
 
