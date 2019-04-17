@@ -49,6 +49,12 @@ bool Player::initAnim(void)
 	AddAnim("Running", 0, 2, lpImageMng.GetAct("image/player.act", "Running")[0].duration, true);
 	AddAnim("Goal", 0, 1, lpImageMng.GetAct("image/player.act", "Goal")[0].duration, true);
 	AddAnim("Wheelie", 0, 6, lpImageMng.GetAct("image/player.act", "Wheelie")[0].duration, false);
+	AddAnim("Right", 0, 1, lpImageMng.GetAct("image/player.act", "Right")[0].duration, false);
+	AddAnim("Left", 0, 1, lpImageMng.GetAct("image/player.act", "Left")[0].duration, false);
+	AddAnim("Forward", 0, 4, lpImageMng.GetAct("image/player.act", "Forward")[0].duration, false);
+	AddAnim("ForwardRoll", 0, 15, lpImageMng.GetAct("image/player.act", "Right")[0].duration, false);
+	AddAnim("Spinning", 0, 12, lpImageMng.GetAct("image/player.act", "Right")[0].duration, false);
+
 	return true;
 }
 
@@ -97,6 +103,7 @@ bool Player::Move(const int accelKey, const int turboKey)
 		{
 			status = STATUS_OVERHEAT;
 			unCtrlTime = COOLDOWN;
+			SetAnim("Wait");
 		}
 		else
 		{
@@ -171,7 +178,7 @@ void Player::SetMove(const GameCtrl & controller)
 		
 			// â‚Æ“–‚½‚Á‚Ä‚¢‚½‚ç
 
-			if(1)
+			if(0)
 			{
 				tilt = Slope::CheckAngleType();
 			}
@@ -181,7 +188,7 @@ void Player::SetMove(const GameCtrl & controller)
 			{
 				inputFram++;
 				if ((inputFram >= KEY_GET_RANGE)
-					|| (tilt == ANGLE_TYPE::STEEP && inputFram >= (KEY_GET_RANGE * 2)))
+				 || (tilt == ANGLE_TYPE::STEEP && inputFram >= (KEY_GET_RANGE * 2)))
 				{
 					tilt++;
 					inputFram = 0;
