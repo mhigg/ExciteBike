@@ -19,25 +19,51 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Geometry.cpp" />
+    <ClCompile Include="OBJ_ID.cpp" />
+    <ClCompile Include="source\ANGLE_TYPE.cpp" />
     <ClCompile Include="source\BaseScene.cpp" />
+    <ClCompile Include="source\Bike.cpp" />
+    <ClCompile Include="source\Composite.cpp" />
+    <ClCompile Include="source\CourceCtrl.cpp" />
+    <ClCompile Include="source\DesignCursor.cpp" />
+    <ClCompile Include="source\DesignScene.cpp" />
     <ClCompile Include="source\GameCtrl.cpp" />
     <ClCompile Include="source\GameScene.cpp" />
     <ClCompile Include="source\ImageMng.cpp" />
+    <ClCompile Include="source\Judgment.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Obj.cpp" />
+    <ClCompile Include="source\Obstacle.cpp" />
     <ClCompile Include="source\Player.cpp" />
+    <ClCompile Include="source\Rectangle.cpp" />
     <ClCompile Include="source\SceneMng.cpp" />
+    <ClCompile Include="source\Slope.cpp" />
+    <ClCompile Include="source\TitleScene.cpp" />
     <ClCompile Include="source\VECTOR2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Geometry.h" />
+    <ClInclude Include="OBJ_ID.h" />
+    <ClInclude Include="source\ANGLE_TYPE.h" />
     <ClInclude Include="source\BaseScene.h" />
+    <ClInclude Include="source\Bike.h" />
     <ClInclude Include="source\classObj.h" />
+    <ClInclude Include="source\Composite.h" />
+    <ClInclude Include="source\CourceCtrl.h" />
+    <ClInclude Include="source\DesignCursor.h" />
+    <ClInclude Include="source\DesignScene.h" />
     <ClInclude Include="source\GameCtrl.h" />
     <ClInclude Include="source\GameScene.h" />
     <ClInclude Include="source\ImageMng.h" />
+    <ClInclude Include="source\Judgment.h" />
     <ClInclude Include="source\Obj.h" />
+    <ClInclude Include="source\Obstacle.h" />
     <ClInclude Include="source\Player.h" />
+    <ClInclude Include="source\Rectangle.h" />
     <ClInclude Include="source\SceneMng.h" />
+    <ClInclude Include="source\Slope.h" />
+    <ClInclude Include="source\TitleScene.h" />
     <ClInclude Include="source\VECTOR2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
