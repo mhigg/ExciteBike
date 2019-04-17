@@ -294,7 +294,7 @@ void Player::SetMove(const GameCtrl & controller)
 		// ﾀｰﾎﾞﾒｰﾀがﾏｯｸｽになったら速度を急激に下げ、強制停止させる。操作不可能
 		speed -= 5;
 		tmpTemp = 20;
-
+		
 		// 5秒経過後、再ｽﾀｰﾄ
 		if (unCtrlTime < 0)
 		{
