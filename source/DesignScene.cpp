@@ -51,6 +51,8 @@ void DesignScene::SelectDraw(void)
 
 void DesignScene::DesignDraw(void)
 {
+	lpCourceCtrl.Draw(true);
+
 	for (auto &itr : (*objList))
 	{
 		itr->Draw();

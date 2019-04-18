@@ -12,6 +12,7 @@
 #include "classObj.h"
 
 constexpr int KEY_GET_RANGE = 15;
+constexpr int PLAYER_SPEED = 16;
 
 Player::Player()
 {

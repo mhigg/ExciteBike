@@ -43,6 +43,7 @@ void GameScene::Draw()
 
 	// ¶Ò×”ÍˆÍ‚©‚çŠ®‘S‚Éo‚½•”•ª‚Í•`‰æ‚µ‚È‚¢
 
+	lpCourceCtrl.Draw(false);
 
 	for (auto itr = objList->begin(); itr != objList->end(); itr++)
 	{

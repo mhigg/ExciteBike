@@ -53,7 +53,8 @@ void DesignCursor::SetMove(const GameCtrl & controller)
 
 	if (ctrl[KEY_INPUT_SPACE] & ~(ctrlOld[KEY_INPUT_SPACE]))
 	{
-		lpCourceCtrl.SetCourceData(pos, id);
+		// ëÊÇPà¯êîóvèCê≥
+		lpCourceCtrl.SetCourceData(VECTOR2(pos.x, pos.y), id);
 	}
 
 	_RPTN(_CRT_WARN, "ID:%d\n", static_cast<int>(id));

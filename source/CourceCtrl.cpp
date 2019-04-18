@@ -2,6 +2,7 @@
 #include <DxLib.h>
 #include "CourceCtrl.h"
 #include "SceneMng.h"
+#include "ImageMng.h"
 #include "Player.h"
 #include "Slope.h"
 #include "ANGLE_TYPE.h"
@@ -28,6 +29,8 @@ void CourceCtrl::Draw(bool modeFlag)
 	else
 	{
 		// GameMode
+	//	auto actData = lpImageMng.GetAct("image/cource.act", "blank")[0];
+		DrawGraph(drawOffset.x /* - scroll*/, drawOffset.y, lpImageMng.GetActID("image/cource.act", "blank")[0], true);
 	}
 }
 
@@ -37,7 +40,11 @@ bool CourceCtrl::SetUp(VECTOR2 size, VECTOR2 blockSize, VECTOR2 drawOffset)
 	this->blockSize = blockSize;
 	this->drawOffset = drawOffset;
 	courceData.resize(mapSize.x * mapSize.y);
-	for (int idx = 0; idx < courceData.size(); idx++)
+	for (int start = 0; start < 4; start++)
+	{
+		courceData[start] = OBJ_ID::START;
+	}
+	for (int idx = 4; idx < courceData.size(); idx++)
 	{
 		courceData[idx] = OBJ_ID::BLANK;
 	}
