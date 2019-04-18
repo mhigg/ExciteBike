@@ -75,8 +75,20 @@ void Obj::Draw(void)
 	animCnt++;
 	if (id < lpImageMng.GetActID(imageName, animName).size())
 	{
+		//auto actData = lpImageMng.GetAct(imageName, animName);
+
+		//DrawRectGraph(
+		//	drawOffset.x + drawPos.x - scrollOffset,
+		//	drawOffset.y + drawPos.y,
+		//	actData[id].rect.x,
+		//	actData[id].rect.y,
+		//	actData[id].width,
+		//	actData[id].height,
+		//	lpImageMng.GetActID(imageName, animName)[id],
+		//	false
+		//);
 		DrawGraph(drawOffset.x + drawPos.x - scrollOffset, drawOffset.y + drawPos.y, lpImageMng.GetActID(imageName, animName)[id], true);
-		_RPTN(_CRT_WARN, "id : %d\n", id);
+//		_RPTN(_CRT_WARN, "id : %d\n", id);
 	}
 }
 

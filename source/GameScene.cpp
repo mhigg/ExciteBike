@@ -1,5 +1,7 @@
 #include <DxLib.h>
+#include <memory>
 #include "GameScene.h"
+#include "DesignScene.h"
 #include "SceneMng.h"
 #include "ImageMng.h"
 #include "Obj.h"
@@ -59,6 +61,11 @@ unique_Base GameScene::UpDate(unique_Base own, const GameCtrl & controller)
 	for (auto itr = objList->begin(); itr != objList->end(); itr++)
 	{
 		(*itr)->UpDate(controller);
+	}
+
+	if (ctrl[KEY_INPUT_SPACE] & ~ctrlOld[KEY_INPUT_SPACE])
+	{
+		return std::make_unique<DesignScene>();
 	}
 
 	Draw();

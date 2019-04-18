@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include "OBJ_ID.h"
 #include "classObj.h"
 #include "VECTOR2.h"
 
@@ -16,18 +18,23 @@ public:
 	// 取得した情報(mapData)をもとに描画 modeFlag:true→EditMode false→GameMode
 	void Draw(bool modeFlag);
 
-	bool SetUp();
+	// ｺｰｽの全長を準備する:ｽﾀｰﾄ地点と最低限(画面3個分くらい)のﾌﾞﾗﾝｸ部分
+	bool SetUp(VECTOR2 mapSize, VECTOR2 blockSize, VECTOR2 drawOffset);
 
 	// GameModeのみ、ﾌﾟﾚｲﾔｰをｲﾝｽﾀﾝｽする関数 1体ｲﾝｽﾀﾝｽしたら2体目以降はｲﾝｽﾀﾝｽされない
 	// modeFlag:true→EditMode false→GameMode
 	bool SetUpGameObj(sharedListObj objList, bool modeFlag);
 
-//	bool SetCourceData(VECTOR2 pos, )
+	bool SetCourceData(VECTOR2 pos, OBJ_ID id);
 
 private:
 	CourceCtrl();
 	~CourceCtrl();
 
+	std::vector<OBJ_ID> courceData;
+
+	VECTOR2 mapSize;		// ｺｰｽ内の設置ﾌﾞﾛｯｸ数
+	VECTOR2 blockSize;
 	VECTOR2 drawOffset;
 };
 

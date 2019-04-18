@@ -47,7 +47,6 @@ public:
 	// ActionData‚ğ“Ç‚İ‚İ
 	const VEC_ACT& GetAct(std::string f_name, std::string actName);
 
-
 private:
 	ImageMng();
 	~ImageMng();

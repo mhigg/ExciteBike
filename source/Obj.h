@@ -18,6 +18,7 @@ enum OBJ_TYPE {
 	OBJ_PLAYER,			// ﾌﾟﾚｲﾔｰ
 	OBJ_BIKE,			// ﾊﾞｲｸ
 	OBJ_OBSTACLE,		// 障害物
+	OBJ_CURSOR,			// ﾃﾞｻﾞｲﾝｶｰｿﾙ
 	OBJ_MAX
 };
 
@@ -50,7 +51,6 @@ public:
 	void UpDate(const GameCtrl &controller);	// 情報更新	ｺﾝﾄﾛｰﾗｰ自体のﾎﾟｲﾝﾀを渡す
 	virtual void Draw(void);					// 描画
 	void Draw(unsigned int id);					// ID指定描画
-//	void Draw();
 	const VECTOR &GetPos(void);					// 座標取得関数
 
 	bool AddAnim(

@@ -59,7 +59,7 @@ int SceneMng::GetFram(bool timeFlag)
 
 int SceneMng::Init(void)
 {
-	SetWindowText("ExciteBike");
+	SetWindowText("ExciteBike_ãvï€éRèÆãP");
 	SetGraphMode(SCREEN_SIZE_X, SCREEN_SIZE_Y, 16);
 	ChangeWindowMode(true);
 	if (DxLib_Init() == -1)
