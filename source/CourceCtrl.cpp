@@ -130,6 +130,18 @@ bool CourceCtrl::SetUpGameObj(sharedListObj objList, bool modeFlag)
 	}
 
 	AddObjList()(objList, std::make_unique<Player>(VGet(0, 0, 0), lpSceneMng.GetDrawOffset()));
+
+	for (int x = 0; x < mapSize.x;)
+	{
+		OBJ_ID id = courceData[x];
+		auto actData = lpImageMng.GetAct("image/cource.act", actNameTbl[static_cast<int>(id)])[0];
+		switch (id)
+		{
+		case OBJ_ID::LARGE:
+//			AddObjList()(objList, std::make_unique<Slope>(VECTOR2(0, 0), actData.))
+			break;
+		}
+	}
 	return true;
 }
 
