@@ -3,7 +3,7 @@
 #include "OBJ_ID.h"
 
 constexpr int SPEED = 10;
-constexpr int KEY_GET_RNG = 15;
+constexpr int KEY_GET_RNG = 60;
 
 class DesignCursor
 	: public Obj
@@ -14,12 +14,13 @@ public:
 	~DesignCursor();
 
 	void SetMove(const GameCtrl & controller);
-	void Draw(void);
+	//void Draw(void);
 	bool CheckObjType(OBJ_TYPE type);
 	bool CheckAngleType(ANGLE_TYPE type);
 
 private:
 	OBJ_ID id;
+
 
 	int inputFram;
 };

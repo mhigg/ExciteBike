@@ -21,9 +21,10 @@ unique_Base DesignScene::UpDate(unique_Base own, const GameCtrl & controller)
 	auto ctrl = controller.GetCtrl(KEY_TYPE_NOW);
 	auto ctrlOld = controller.GetCtrl(KEY_TYPE_OLD);
 
-	for (auto &data : (*objList))
+	for (auto itr = objList->begin(); itr != objList->end(); ++itr)
 	{
-		data->UpDate(controller);
+		(*itr)->UpDate(controller);
+//		data->GetScroll();
 	}
 
 	DesignDraw();
@@ -39,6 +40,7 @@ int DesignScene::Init()
 	}
 	objList->clear();
 	lpSceneMng.SetDrawOffset(VECTOR2(GAME_SCREEN_X, GAME_SCREEN_Y));
+	lpCourceCtrl.SetUp(VECTOR2(GAME_SCREEN_SIZE_X, GAME_SCREEN_SIZE_Y), VECTOR2(BLOCK_SIZE_X, BLOCK_SIZE_Y), lpSceneMng.GetDrawOffset());
 	AddObjList()(objList, std::make_unique<DesignCursor>(lpSceneMng.GetDrawOffset()));
 	
 	return 0;
@@ -53,8 +55,8 @@ void DesignScene::DesignDraw(void)
 {
 	lpCourceCtrl.Draw(true);
 
-	for (auto &itr : (*objList))
+	for (auto itr = objList->begin(); itr != objList->end(); ++itr) 
 	{
-		itr->Draw();
+		(*itr)->Draw();
 	}
 }

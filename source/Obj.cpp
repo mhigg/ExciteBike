@@ -2,18 +2,19 @@
 #include "Obj.h"
 #include "SceneMng.h"
 #include "ImageMng.h"
+#include "CourceCtrl.h"
 #include "classObj.h"
 
 Obj::Obj()
 {
+	scrollOffset = 0;
 }
 
 Obj::Obj(VECTOR2 drawOffset) :drawOffset(drawOffset)
 {
-	//‚±‚Ìºİ½Ä×¸À‚ªŒÄ‚Ño‚³‚ê‚½uŠÔ^‚Áæ‚ÉdrawOffset‚ª‰Šú‰»‚³‚ê‚é
+	scrollOffset = 0;
 }
 
-//‰Šú‰»
 bool Obj::init(std::string fileName, VECTOR2 divSize, VECTOR2 divCnt)
 {
 	lpImageMng.GetID(fileName, divSize, divCnt);
@@ -48,6 +49,7 @@ Obj::~Obj()
 void Obj::UpDate(const GameCtrl &controller)
 {
 	SetMove(controller);
+	lpCourceCtrl.SetScroll(scrollOffset);
 }
 
 void Obj::Draw(void)
@@ -75,6 +77,8 @@ void Obj::Draw(void)
 	animCnt++;
 	if (id < lpImageMng.GetActID(imageName, animName).size())
 	{
+		auto path = imageName.substr(0, imageName.rfind(".") + 1) + "png";
+
 		//auto actData = lpImageMng.GetAct(imageName, animName);
 
 		//DrawRectGraph(
@@ -84,9 +88,10 @@ void Obj::Draw(void)
 		//	actData[id].rect.y,
 		//	actData[id].width,
 		//	actData[id].height,
-		//	lpImageMng.GetActID(imageName, animName)[id],
+		//	lpImageMng.GetID(path)[id],
 		//	false
 		//);
+
 		DrawGraph(drawOffset.x + drawPos.x - scrollOffset, drawOffset.y + drawPos.y, lpImageMng.GetActID(imageName, animName)[id], true);
 //		_RPTN(_CRT_WARN, "id : %d\n", id);
 	}
@@ -144,6 +149,7 @@ bool Obj::SetAnim(std::string animName)
 	}
 	Obj::animName = animName;
 	Obj::animCnt = 0;	//±ÆÒ°¼®İ•ÏX‚É‚æ‚éºÏ”‚Ì¸Ø±
+	Obj::animEndFlag = false;
 	return true;
 }
 

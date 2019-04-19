@@ -28,8 +28,9 @@ int GameScene::Init()
 		objList = std::make_shared<uniqueObjList>();
 	}
 	objList->clear();
-	lpCourceCtrl.SetUpGameObj(objList, false);
 	lpSceneMng.SetDrawOffset(VECTOR2(GAME_SCREEN_X, GAME_SCREEN_Y));
+	lpCourceCtrl.SetUp(VECTOR2(GAME_SCREEN_SIZE_X, GAME_SCREEN_SIZE_Y), VECTOR2(BLOCK_SIZE_X, BLOCK_SIZE_Y), lpSceneMng.GetDrawOffset());
+	lpCourceCtrl.SetUpGameObj(objList, false);
 
 	return 0;
 }
@@ -45,7 +46,7 @@ void GameScene::Draw()
 
 	lpCourceCtrl.Draw(false);
 
-	for (auto itr = objList->begin(); itr != objList->end(); itr++)
+	for (auto itr = objList->begin(); itr != objList->end(); ++itr)
 	{
 		(*itr)->Draw();
 	}
@@ -59,7 +60,7 @@ unique_Base GameScene::UpDate(unique_Base own, const GameCtrl & controller)
 	auto ctrlOld = controller.GetCtrl(KEY_TYPE_OLD);
 
 	// ƒvƒŒƒCƒ„[‚Ì“®ìˆ—
-	for (auto itr = objList->begin(); itr != objList->end(); itr++)
+	for (auto itr = objList->begin(); itr != objList->end(); ++itr)
 	{
 		(*itr)->UpDate(controller);
 	}

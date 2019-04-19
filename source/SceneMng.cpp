@@ -4,8 +4,8 @@
 #include "GameScene.h"
 #include "VECTOR2.h"
 
-constexpr int SCREEN_SIZE_X = 1200;
-constexpr int SCREEN_SIZE_Y = 800;
+constexpr int SCREEN_SIZE_X = 640;
+constexpr int SCREEN_SIZE_Y = 480;
 
 //#define SCREEN_SIZE_X 1200			//‰æ–Ê‰ð‘œ“x
 //#define SCREEN_SIZE_Y 800

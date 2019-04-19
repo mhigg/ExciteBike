@@ -1,13 +1,18 @@
 #pragma once
 #include <memory>
+#include "VECTOR2.h"
 
-constexpr int GAME_SCREEN_X = 0;			// 描画オフセット
-constexpr int GAME_SCREEN_Y = 100;
+constexpr int GAME_SCREEN_X = 50;			// 描画オフセット
+constexpr int GAME_SCREEN_Y = 265;
 
-constexpr int GAME_SCREEN_SIZE_X = 1200;	// ゲームエリアのサイズ
-constexpr int GAME_SCREEN_SIZE_Y = 500;
+constexpr int GAME_SCREEN_SIZE_X = 16000;	// ゲームエリアのサイズ(1ﾌﾞﾛｯｸ16×100ﾌﾞﾛｯｸ分)
+constexpr int GAME_SCREEN_SIZE_Y = 300;
 
 constexpr int LANE_WIDTH = 50;				// ﾚｰﾝ1つの幅(ﾌﾟﾚｲﾔｰの幅の半分)
+
+constexpr int BLOCK_SIZE_X = 16;
+constexpr int BLOCK_SIZE_Y = 112;
+
 
 class BaseScene;
 class GameCtrl;

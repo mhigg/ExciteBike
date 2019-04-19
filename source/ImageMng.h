@@ -24,6 +24,8 @@ struct ActionData {
 class VECTOR2;
 using VEC_INT = std::vector<int>;
 using VEC_ACT = std::vector<ActionData>;
+using MAP_STR_ACT = std::map<std::string, VEC_ACT>;
+using MAP_ACT_ITR = MAP_STR_ACT::iterator;
 
 //íZèkíËã`
 #define lpImageMng ImageMng::GetInstance()
@@ -56,5 +58,5 @@ private:
 
 	std::map<std::string, VEC_INT> imageMap;
 	std::map<std::string, ActionHeader> header;
-	std::map<std::string, VEC_ACT> data;
+	MAP_STR_ACT data;
 };

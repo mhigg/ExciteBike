@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <array>
 #include "OBJ_ID.h"
 #include "classObj.h"
 #include "VECTOR2.h"
@@ -27,14 +28,19 @@ public:
 
 	bool SetCourceData(VECTOR2 pos, OBJ_ID id);
 
+	void SetScroll(int distance);
+
 private:
 	CourceCtrl();
 	~CourceCtrl();
 
 	std::vector<OBJ_ID> courceData;
 
+	std::array<std::string, static_cast<int>(OBJ_ID::MAX)> actNameTbl;
+
 	VECTOR2 mapSize;		// ∫∞Ωì‡ÇÃê›íuÃﬁ€Ø∏êî
 	VECTOR2 blockSize;
 	VECTOR2 drawOffset;
+	int scrollOffsetX;
 };
 

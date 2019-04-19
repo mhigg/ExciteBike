@@ -152,7 +152,7 @@ bool Player::Move(const int accelKey, const int turboKey)
 	{
 		if (inputFram % 12 == 0)
 		{
-			speed -= 5;
+			speed -= 3;
 			tmpTemp -= 2;
 		}
 		inputFram--;
@@ -185,7 +185,7 @@ void Player::SetMove(const GameCtrl & controller)
 			}
 		else
 		{
-			if (ctrl[KEY_INPUT_LEFT])
+			if (ctrl[KEY_INPUT_LEFT] & ~ctrl[KEY_INPUT_RIGHT])
 			{
 				inputFram++;
 				if ((inputFram >= KEY_GET_RANGE)
@@ -197,7 +197,7 @@ void Player::SetMove(const GameCtrl & controller)
 			}
 
 			// ‘OŒX—Dæ
-			if (ctrl[KEY_INPUT_RIGHT] & ~ctrl[KEY_INPUT_LEFT])
+			if (ctrl[KEY_INPUT_RIGHT])
 			{
 				inputFram++;
 				if (inputFram >= KEY_GET_RANGE)
@@ -229,7 +229,7 @@ void Player::SetMove(const GameCtrl & controller)
 		}
 
 		// ¶‰E“¯‰Ÿ‚µ‚Í‰E—Dæ
-		if (ctrl[KEY_INPUT_UP])
+		if (ctrl[KEY_INPUT_UP] & ~ ctrl[KEY_INPUT_DOWN])
 		{
 			// 1‰ñ‰Ÿ‚·‚Æ1Ú°İ•ª¶(‰æ–Êã‚Å‚Ìã)‚ÉˆÚ“®‚·‚é
 			// ‰Ÿ‚µ‘±‚¯‚Ä‚¢‚é‚Æ1Ú°İ‚¸‚Â¶‚ÉˆÚ“®‚µ‚Ä‚¢‚­
