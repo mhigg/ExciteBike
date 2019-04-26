@@ -111,7 +111,7 @@ bool CourceCtrl::SetUp(VECTOR2 size, VECTOR2 blockSize, VECTOR2 drawOffset)
 	mapSize = size / blockSize;		// º°½‘S’· / 1ÌÞÛ¯¸‚Ì»²½Þ
 	this->blockSize = blockSize;
 	this->drawOffset = drawOffset;
-	courceData.resize(mapSize.x * mapSize.y);
+	courceData.resize(mapSize.x);
 	courceData[0] = OBJ_ID::BLANK;
 	courceData[1] = OBJ_ID::START;
 	for (int idx = 5; idx < courceData.size(); idx++)
@@ -139,6 +139,8 @@ bool CourceCtrl::SetUpGameObj(sharedListObj objList, bool modeFlag)
 		{
 		case OBJ_ID::LARGE:
 //			AddObjList()(objList, std::make_unique<Slope>(VECTOR2(0, 0), actData.))
+			break;
+		default:
 			break;
 		}
 	}

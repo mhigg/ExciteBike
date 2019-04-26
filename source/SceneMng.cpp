@@ -1,4 +1,5 @@
 #include <DxLib.h>
+#include <memory>
 #include "SceneMng.h"
 #include "BaseScene.h"
 #include "GameScene.h"

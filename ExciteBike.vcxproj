@@ -19,8 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Geometry.cpp" />
-    <ClCompile Include="OBJ_ID.cpp" />
     <ClCompile Include="source\ANGLE_TYPE.cpp" />
     <ClCompile Include="source\BaseScene.cpp" />
     <ClCompile Include="source\Bike.cpp" />
@@ -34,6 +32,7 @@
     <ClCompile Include="source\Judgment.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Obj.cpp" />
+    <ClCompile Include="source\OBJ_ID.cpp" />
     <ClCompile Include="source\Obstacle.cpp" />
     <ClCompile Include="source\Player.cpp" />
     <ClCompile Include="source\Rectangle.cpp" />
@@ -43,8 +42,6 @@
     <ClCompile Include="source\VECTOR2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Geometry.h" />
-    <ClInclude Include="OBJ_ID.h" />
     <ClInclude Include="source\ANGLE_TYPE.h" />
     <ClInclude Include="source\BaseScene.h" />
     <ClInclude Include="source\Bike.h" />
@@ -58,6 +55,7 @@
     <ClInclude Include="source\ImageMng.h" />
     <ClInclude Include="source\Judgment.h" />
     <ClInclude Include="source\Obj.h" />
+    <ClInclude Include="source\OBJ_ID.h" />
     <ClInclude Include="source\Obstacle.h" />
     <ClInclude Include="source\Player.h" />
     <ClInclude Include="source\Rectangle.h" />
