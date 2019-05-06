@@ -14,7 +14,7 @@ public:
 	~DesignCursor();
 
 	void SetMove(const GameCtrl & controller);
-	//void Draw(void);
+	void Draw(void);
 	bool CheckObjType(OBJ_TYPE type);
 	bool CheckAngleType(ANGLE_TYPE type);
 

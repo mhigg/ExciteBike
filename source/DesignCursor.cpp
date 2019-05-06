@@ -66,10 +66,10 @@ void DesignCursor::SetMove(const GameCtrl & controller)
 	_RPTN(_CRT_WARN, "ID:%d\n", static_cast<int>(id));
 }
 
-//void DesignCursor::Draw(void)
-//{
-//	lpImageMng.GetActID("image/player.act", "Wait");
-//}
+void DesignCursor::Draw(void)
+{
+	lpImageMng.GetActID("image/player.act", "Wait");
+}
 
 bool DesignCursor::CheckObjType(OBJ_TYPE type)
 {

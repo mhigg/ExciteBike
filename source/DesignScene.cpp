@@ -53,10 +53,19 @@ void DesignScene::SelectDraw(void)
 
 void DesignScene::DesignDraw(void)
 {
+	ClsDrawScreen();
+
+	DrawString(0, 100, "GameArea", 0x00ffffff);
+	DrawString(0, 600, "GameArea", 0x00ffffff);
+
+	// ¶Ò×”ÍˆÍ‚©‚çŠ®‘S‚Éo‚½•”•ª‚Í•`‰æ‚µ‚È‚¢
+
 	lpCourceCtrl.Draw(true);
 
-	for (auto itr = objList->begin(); itr != objList->end(); ++itr) 
+	for (auto itr = objList->begin(); itr != objList->end(); ++itr)
 	{
 		(*itr)->Draw();
 	}
+
+	ScreenFlip();
 }
