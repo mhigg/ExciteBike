@@ -3,10 +3,16 @@
 #include <vector>
 #include <map>
 
-struct ActionHeader {
+struct ImageHeader {
 	float version;			// Ì§²Ù‚ÌÊŞ°¼Ş®İ
 	std::string fileName;	// Ì§²Ù–¼
 	int actCnt;				// ±¸¼®İ‚Ìí—Ş” ©‚±‚ÌŒÂ”•ª‚¾‚¯forÙ°Ìß‚µ‚Ä±¸¼®İ‚²‚Æ‚É‚Ü‚Æ‚ß‚é
+};
+
+struct ActionHeader {
+	std::string actName;	// ±¸¼®İ–¼
+	bool loop;				// Ù°Ìß‚·‚é‚©‚Ç‚¤‚©
+	int animCnt;			// ±ÆÒ°¼®İ‚ÌºÏ”
 };
 
 struct ActionData {
@@ -57,6 +63,7 @@ private:
 	void ReadBinary(std::string f_name);
 
 	std::map<std::string, VEC_INT> imageMap;
-	std::map<std::string, ActionHeader> header;
-	MAP_STR_ACT data;
+	std::map<std::string, ImageHeader> imageHeader;		// ‰æ‘œ‚ÌÍ¯ÀŞ°
+	std::map<std::string, ActionHeader> actHeader;		// ±¸¼®İÍ¯ÀŞ°
+	MAP_STR_ACT actData;	// ±¸¼®İÃŞ°À
 };
