@@ -131,14 +131,6 @@ void ImageMng::ReadBinary(std::string f_name)
 			FileRead_read(&actData[actName][animIdx].duration, sizeof(actData[actName][animIdx].duration), f);
 			int actRc;	// “–‚½‚è”»’è—p‹éŒ`‚ÌŒÂ” ©‚±‚ÌŒÂ”•ª‚¾‚¯forÙ°Ìß‚µ‚Ä“¯ˆê“–‚½‚è”»’èÀ²Ìß‚²‚Æ‚É‚Ü‚Æ‚ß‚é
 			FileRead_read(&actRc, sizeof(actRc), f);
-			for (int actRcIdx = 0; actRcIdx < actRc; actRcIdx++)
-			{
-				FileRead_read(&actData[actName][animIdx].actRcType, sizeof(actData[actName][animIdx].actRcType), f);
-				FileRead_read(&actData[actName][animIdx].actRect.x, sizeof(actData[actName][animIdx].actRect.x), f);
-				FileRead_read(&actData[actName][animIdx].actRect.y, sizeof(actData[actName][animIdx].actRect.y), f);
-				FileRead_read(&actData[actName][animIdx].actRcWidth, sizeof(actData[actName][animIdx].actRcWidth), f);
-				FileRead_read(&actData[actName][animIdx].actRcHeight, sizeof(actData[actName][animIdx].actRcHeight), f);
-			}
 		}
 	}
 	FileRead_close(f);

@@ -1,4 +1,5 @@
 #include "DesignScene.h"
+#include "GameScene.h"
 #include "SceneMng.h"
 #include "DesignCursor.h"
 #include "CourceCtrl.h"
@@ -20,6 +21,11 @@ unique_Base DesignScene::UpDate(unique_Base own, const GameCtrl & controller)
 {
 	auto ctrl = controller.GetCtrl(KEY_TYPE_NOW);
 	auto ctrlOld = controller.GetCtrl(KEY_TYPE_OLD);
+
+	if (ctrl[KEY_INPUT_F1] & ~ctrlOld[KEY_INPUT_F1])
+	{
+		return std::make_unique<GameScene>();
+	}
 
 	for (auto itr = objList->begin(); itr != objList->end(); ++itr)
 	{
