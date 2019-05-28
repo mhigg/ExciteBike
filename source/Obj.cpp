@@ -77,7 +77,7 @@ void Obj::Draw(void)
 	animCnt++;
 	if (id < lpImageMng.GetActID(imageName, animName).size())
 	{
-		auto path = imageName.substr(0, imageName.rfind(".") + 1) + "png";
+		//auto path = imageName.substr(0, imageName.rfind(".") + 1) + "png";
 
 		//auto actData = lpImageMng.GetAct(imageName, animName);
 

@@ -51,6 +51,8 @@ void GameScene::Draw()
 		(*itr)->Draw();
 	}
 
+	DrawGraph(0, 480 - 117, lpImageMng.GetID("image/info.png")[0], true);
+
 	ScreenFlip();
 }
 

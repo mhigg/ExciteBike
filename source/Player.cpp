@@ -12,7 +12,7 @@
 #include "classObj.h"
 
 constexpr int KEY_GET_RANGE = 15;
-constexpr int PLAYER_SPEED = 16;
+constexpr int PLAYER_SPEED = 2;
 
 Player::Player()
 {
@@ -121,7 +121,7 @@ bool Player::Move(const int accelKey, const int turboKey)
 	{
 		// 押し続けている間一定速度で走行し、ｱﾆﾒｰｼｮﾝを「走行中」にする
 		SetAnim("Running");
-		speed = 20;	// ←最初少し加速、あとは一定速度(0-2-8-20くらい)
+		speed = PLAYER_SPEED + 1 * (inputFram / 30);	// ←最初少し加速、あとは一定速度(0-2-8-20くらい)
 
 		if (inputFram % 12 == 0)
 		{
@@ -155,7 +155,7 @@ bool Player::Move(const int accelKey, const int turboKey)
 			speed -= 3;
 			tmpTemp -= 2;
 		}
-		inputFram--;
+		inputFram = 0;
 	}
 	return (speed > 0);
 }
@@ -177,12 +177,12 @@ void Player::SetMove(const GameCtrl & controller)
 
 	auto Tilt = [&](auto ctrl) {
 		
-			// 坂と当たっていたら
+		// 坂と当たっていたら
 
-			if(0)
-			{
-				tilt = Slope::CheckAngleType();
-			}
+		if(0)
+		{
+			tilt = Slope::CheckAngleType();
+		}
 		else
 		{
 			if (ctrl[KEY_INPUT_LEFT] & ~ctrl[KEY_INPUT_RIGHT])
